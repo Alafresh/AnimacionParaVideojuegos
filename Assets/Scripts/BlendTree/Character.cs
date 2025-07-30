@@ -3,9 +3,24 @@ using UnityEngine;
 [DefaultExecutionOrder(-1)]
 public class Character : MonoBehaviour
 {
-    private void RegisterComponents() {
-        foreach(ICharacterComponent component in GetComponentsInChildren<ICharacterComponent>()) {
-            component.ParentCharacter = this;
+    Transform lockTarget;
+
+    public Transform LockTarget
+    {
+        get;
+        set;
+    }
+
+    private void Awake()
+    {
+        RegisterComponents();
+    }
+
+    private void RegisterComponents()
+    {
+        foreach (ICharacterComponent characterComponent in GetComponentsInChildren<ICharacterComponent>())
+        {
+            characterComponent.ParentCharacter = this;
         }
     }
 }
