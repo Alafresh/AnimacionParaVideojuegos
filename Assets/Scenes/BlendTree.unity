@@ -2501,8 +2501,8 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 7034814753527062824}
         m_TargetAssemblyTypeName: CharacterLook, Assembly-CSharp
-        m_MethodName: OnLook
-        m_Mode: 1
+        m_MethodName: OLook
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2535,9 +2535,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedX:
-    _smoothTime: 0
+    _smoothTime: 1
   speedY:
-    _smoothTime: 0
+    _smoothTime: 1
 --- !u!114 &7034814753527062824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2550,7 +2550,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0423d4b4c965584499280300488bc791, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 8867817082811309003}
+  target: {fileID: 139115912}
   horizontalDamper:
     _smoothTime: 0.3
   verticalDamper:
