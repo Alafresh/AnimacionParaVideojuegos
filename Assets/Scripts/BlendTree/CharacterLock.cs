@@ -43,6 +43,7 @@ public class CharacterLock : MonoBehaviour, ICharacterComponent
             nearestDistance = Mathf.Min(nearestDistance, distance);
             nearestAngle = Mathf.Min(nearestAngle, angle);
         }
+        ParentCharacter.LockTarget = detectedObjects[closestObject].transform;
     }
 #if UNITY_EDITOR
     private void OnDrawGizmos() {
