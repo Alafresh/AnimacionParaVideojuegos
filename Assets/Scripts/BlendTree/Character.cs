@@ -7,13 +7,14 @@ public class Character : MonoBehaviour
 
     public Transform LockTarget
     {
-        get;
-        set;
+        get => lockTarget;
+        set => lockTarget = value;
     }
 
     private void Awake()
     {
         RegisterComponents();
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void RegisterComponents()
