@@ -3470,7 +3470,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2698594026213879823}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.025715893, y: 0.000030411366, z: -0.0005182684, w: 0.9996692}
+  m_LocalRotation: {x: -0.02571571, y: 0.00004186372, z: -0.00051784894, w: 0.99966913}
   m_LocalPosition: {x: -0, y: 0.099888764, z: -0.00514079}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3488,8 +3488,8 @@ AimConstraint:
   m_Enabled: 1
   serializedVersion: 2
   m_Weight: 1
-  m_RotationAtRest: {x: -2.9471462, y: 0.005017612, z: -0.05953788}
-  m_RotationOffset: {x: -88.849236, y: -90.050095, z: 89.99089}
+  m_RotationAtRest: {x: -2.9471245, y: 0.0063300105, z: -0.059523553}
+  m_RotationOffset: {x: -88.84991, y: -90.0491, z: 89.989914}
   m_AimVector: {x: 0, y: 0, z: 1}
   m_UpVector: {x: 0, y: 1, z: 0}
   m_WorldUpVector: {x: 0, y: 1, z: 0}
