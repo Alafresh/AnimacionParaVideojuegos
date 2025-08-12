@@ -392,7 +392,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &859882729
 Transform:
   m_ObjectHideFlags: 0
@@ -582,7 +582,7 @@ Transform:
   m_GameObject: {fileID: 1020424245}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.54994196, y: 1.5359806, z: -1.5389352}
+  m_LocalPosition: {x: 0.35994196, y: 1.1459806, z: -2.4889352}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -838,7 +838,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1726957655
 Transform:
   m_ObjectHideFlags: 0
@@ -2066,8 +2066,9 @@ GameObject:
   - component: {fileID: 3981325468981115743}
   - component: {fileID: 7034814753527062821}
   - component: {fileID: 7034814753527062823}
-  - component: {fileID: 7034814753527062824}
   - component: {fileID: 7034814753527062825}
+  - component: {fileID: 7034814753527062824}
+  - component: {fileID: 7034814753527062826}
   - component: {fileID: 7034814753527062822}
   m_Layer: 0
   m_Name: Ch11_nonPBR
@@ -2838,6 +2839,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 77deefdb-189e-48fa-8209-32b5a2971783
     m_ActionName: 'Character/Lock[/Mouse/middleButton]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7034814753527062826}
+        m_TargetAssemblyTypeName: CharacterAim, Assembly-CSharp
+        m_MethodName: OnAim
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a5a3a7aa-a4cd-4983-968f-4ee6201f5332
+    m_ActionName: 'Character/Aim[/Mouse/rightButton]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Character
@@ -2856,11 +2873,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedX:
-    _smoothTime: 1
+    _smoothTime: 0.5
   speedY:
-    _smoothTime: 1
-  angularSpeed: 0
-  camera: {fileID: 0}
+    _smoothTime: 0.5
+  angularSpeed: 90
+  camera: {fileID: 1020424247}
 --- !u!114 &7034814753527062824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2875,9 +2892,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 139115912}
   horizontalDampener:
-    _smoothTime: -10
+    _smoothTime: 0.3
   verticalDampener:
-    _smoothTime: 0
+    _smoothTime: 0.1
   horizontalRotationSpeed: 20
   verticalRotationSpeed: -10
   verticalRotationLimits: {x: 0, y: 75}
@@ -2900,6 +2917,23 @@ MonoBehaviour:
     m_Bits: 64
   detectionRadius: 20
   detectionAngle: 60
+--- !u!114 &7034814753527062826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4326642881996906981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d571333d969bdb7448dbebfc14ecab90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aimCamera: {fileID: 1726957658}
+  aimDamper:
+    _smoothTime: 0
+  aimConstraint: {fileID: 9185137001766168665}
+  anim: {fileID: 7034814753527062821}
 --- !u!4 &7174095501860078513
 Transform:
   m_ObjectHideFlags: 0
@@ -3470,7 +3504,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2698594026213879823}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.02571571, y: 0.00004186372, z: -0.00051784894, w: 0.99966913}
+  m_LocalRotation: {x: -0.0055724606, y: -0.010024951, z: -0.0009795921, w: 0.9999338}
   m_LocalPosition: {x: -0, y: 0.099888764, z: -0.00514079}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3489,8 +3523,8 @@ AimConstraint:
   serializedVersion: 2
   m_Weight: 1
   m_RotationAtRest: {x: -2.9471245, y: 0.0063300105, z: -0.059523553}
-  m_RotationOffset: {x: -88.84991, y: -90.0491, z: 89.989914}
-  m_AimVector: {x: 0, y: 0, z: 1}
+  m_RotationOffset: {x: -0.6374522, y: -1.1508467, z: -0.046412703}
+  m_AimVector: {x: 0, y: 0, z: 0}
   m_UpVector: {x: 0, y: 1, z: 0}
   m_WorldUpVector: {x: 0, y: 1, z: 0}
   m_WorldUpObject: {fileID: 0}
@@ -3499,7 +3533,7 @@ AimConstraint:
   m_AffectRotationY: 1
   m_AffectRotationZ: 1
   m_Active: 1
-  m_IsLocked: 0
+  m_IsLocked: 1
   m_Sources:
   - sourceTransform: {fileID: 465542101}
     weight: 1

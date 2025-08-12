@@ -32,6 +32,11 @@ public class CharacterMovement : MonoBehaviour, ICharacterComponent
         Debug.DrawLine(transform.position, transform.position + characterForward * 5, Color.red);
         targetRotation = Quaternion.LookRotation(characterForward, floorNormal);
     }
+    private void ApplyCharacterRotation() { 
+        float motionMagnitude = Mathf.Sqrt(speedX.TargetValue * speedX.TargetValue + speedY.TargetValue * speedY.TargetValue);
+        float rotationSpeed = Mathf.SmoothStep(0, .1f, motionMagnitude);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * angularSpeed * Time.deltaTime);
+    }
 
     public void OnMove(InputAction.CallbackContext ctx)
     {
@@ -47,5 +52,7 @@ public class CharacterMovement : MonoBehaviour, ICharacterComponent
         _animator.SetFloat(_speedXHash, speedX.CurrentValue);
         _animator.SetFloat(_speedYHash, speedY.CurrentValue);
         SolveCharacterRotation();
+        if(!ParentCharacter.IsAiming)
+            ApplyCharacterRotation();
     }
 }
