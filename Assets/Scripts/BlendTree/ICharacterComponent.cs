@@ -1,6 +1,7 @@
-using UnityEngine;
-
-public interface ICharacterComponent
+namespace GA.Sessions.Class_03.Scripts
 {
-    Character ParentCharacter { get; set; }
+    public interface ICharacterComponent
+    {
+        Character ParentCharacter { get; set; }
+    }
 }

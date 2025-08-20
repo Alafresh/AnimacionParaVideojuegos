@@ -1,9 +1,11 @@
+using System;
+using GA.Sessions.Class_03.Scripts;
 using UnityEngine;
 
 [DefaultExecutionOrder(-1)]
 public class Character : MonoBehaviour
 {
-    Transform lockTarget;
+    private Transform lockTarget;
     private bool isAiming;
 
     public Transform LockTarget
@@ -11,7 +13,9 @@ public class Character : MonoBehaviour
         get => lockTarget;
         set => lockTarget = value;
     }
-    public bool IsAiming {
+
+    public bool IsAiming
+    {
         get => isAiming;
         set => isAiming = value;
     }

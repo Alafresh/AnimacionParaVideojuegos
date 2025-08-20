@@ -1,16 +1,19 @@
 ﻿using System;
 using UnityEngine;
 
-[Serializable]
-public struct FloatDamper
+namespace GA.Sessions.Class_03.Scripts
 {
-    [SerializeField] private float _smoothTime;
-    private float currentVelocity;
-    public float TargetValue { get; set; }
-    public float CurrentValue { get; private set; }
-
-    public void Update()
+    [Serializable]
+    public struct FloatDamper
     {
-        CurrentValue = Mathf.SmoothDamp(CurrentValue, TargetValue, ref currentVelocity, _smoothTime);
+        [SerializeField] private float _smoothTime;
+        private float currentVelocity;
+        public float TargetValue { get; set; }
+        public float CurrentValue { get; private set; }
+
+        public void Update()
+        {
+            CurrentValue = Mathf.SmoothDamp(CurrentValue, TargetValue, ref currentVelocity, _smoothTime);
+        }
     }
 }
