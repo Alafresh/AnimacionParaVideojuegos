@@ -1,0 +1,48 @@
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class WaypointIndicator : MonoBehaviour
+{
+    [SerializeField] private Image img;
+    [SerializeField] private Image colorImg;
+    [SerializeField] private Transform target;
+    [SerializeField] TextMeshProUGUI textMeshProUGUI;
+    [SerializeField] private Vector3 offset;
+
+    private void Update() {
+        float minX = img.GetPixelAdjustedRect().width / 2;
+        float maxX = Screen.width - minX;
+
+        float minY = img.GetPixelAdjustedRect().height / 2;
+        float maxY = Screen.height - minY;
+
+        Vector2 pos = Camera.main.WorldToScreenPoint(target.position + offset);
+
+        if(Vector3.Dot((target.position - transform.position), transform.forward) < 0) {
+            // target is behind the player
+            if(pos.x < Screen.width / 2) {
+                pos.x = maxX;
+            } else {
+                pos.x = minX;
+            }
+        }
+
+        pos.x = Mathf.Clamp(pos.x, minX, maxX);
+        pos.y = Mathf.Clamp(pos.y, minY, maxY);
+
+        img.transform.position = pos;
+        int distance = (int)Vector3.Distance(target.position, transform.position);
+        if (distance >=20 && distance <= 30) {
+            colorImg.color = Color.yellow;
+            textMeshProUGUI.color = Color.yellow;
+        }else if (distance > 30 ){
+            colorImg.color = Color.red;
+            textMeshProUGUI.color = Color.red;
+        } else {
+            colorImg.color= Color.green;
+            textMeshProUGUI.color= Color.green;
+        }
+            textMeshProUGUI.text = distance.ToString() + "m";
+    }
+}
