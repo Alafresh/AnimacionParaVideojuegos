@@ -31,11 +31,11 @@ namespace GA.Sessions.Class_03.Scripts
             float nearestDistance = detectionRadius;
             
             int closestObject = 0;
-            Vector3 cameraForward = camera.transform.forward;
+            Vector3 cameraForward = lockCamera.transform.forward;
             for (int i = 0; i < detectedObjects.Length; i++)
             {
                 Collider obj = detectedObjects[i];
-                Vector3 objViewDirection = obj.transform.position - camera.transform.position;
+                Vector3 objViewDirection = obj.transform.position - lockCamera.transform.position;
                 float dot = Vector3.Dot(cameraForward, objViewDirection.normalized);
                 float angle = Mathf.Acos(dot) * Mathf.Rad2Deg;
                 if (angle > detectionAngle) continue;

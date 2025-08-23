@@ -3385,18 +3385,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 7034814753527062825}
-        m_TargetAssemblyTypeName: GA.Sessions.Class_03.Scripts.CharacterLock, Assembly-CSharp
-        m_MethodName: ActiveCamera
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
     m_ActionId: 77deefdb-189e-48fa-8209-32b5a2971783
     m_ActionName: 'Character/Lock[/Mouse/middleButton]'
   - m_PersistentCalls:
@@ -3452,9 +3440,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 139115912}
   horizontalDampener:
-    _smoothTime: 0.3
+    _smoothTime: 0.9
   verticalDampener:
-    _smoothTime: 0.1
+    _smoothTime: 0.9
   horizontalRotationSpeed: 20
   verticalRotationSpeed: -10
   verticalRotationLimits: {x: 0, y: 75}
@@ -3472,7 +3460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 1020424247}
-  lockCamera: {fileID: 0}
+  lockCamera: {fileID: 772852043}
   detectionMask:
     serializedVersion: 2
     m_Bits: 64
