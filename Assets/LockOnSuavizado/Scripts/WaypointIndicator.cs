@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class WaypointIndicator : MonoBehaviour
 {
     [SerializeField] private Image img;
+    [SerializeField] private Image colorImg;
     [SerializeField] private Transform target;
     [SerializeField] TextMeshProUGUI textMeshProUGUI;
     [SerializeField] private Vector3 offset;
@@ -31,6 +32,17 @@ public class WaypointIndicator : MonoBehaviour
         pos.y = Mathf.Clamp(pos.y, minY, maxY);
 
         img.transform.position = pos;
-        textMeshProUGUI.text = ((int)Vector3.Distance(target.position, transform.position)).ToString() + "m";
+        int distance = (int)Vector3.Distance(target.position, transform.position);
+        if (distance >=20 && distance <= 30) {
+            colorImg.color = Color.yellow;
+            textMeshProUGUI.color = Color.yellow;
+        }else if (distance > 30 ){
+            colorImg.color = Color.red;
+            textMeshProUGUI.color = Color.red;
+        } else {
+            colorImg.color= Color.green;
+            textMeshProUGUI.color= Color.green;
+        }
+            textMeshProUGUI.text = distance.ToString() + "m";
     }
 }
