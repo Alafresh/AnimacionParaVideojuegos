@@ -1101,7 +1101,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d755989bbef1ec24aa82201bf1dab9a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameras: []
+  cameras:
+  - {fileID: 1726957658}
+  - {fileID: 859882731}
+  - {fileID: 772852043}
 --- !u!1 &1192802049
 GameObject:
   m_ObjectHideFlags: 0
@@ -3642,6 +3645,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a5a3a7aa-a4cd-4983-968f-4ee6201f5332
     m_ActionName: 'Character/Aim[/Mouse/rightButton]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7034814753527062827}
+        m_TargetAssemblyTypeName: CharacterGun, Assembly-CSharp
+        m_MethodName: OnFire
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 11f3ecb7-707d-4151-a585-bc4b81b7f93d
+    m_ActionName: 'Character/Fire[/Mouse/leftButton]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Character
