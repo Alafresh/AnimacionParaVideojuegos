@@ -22,7 +22,7 @@ public class CharacterGun : MonoBehaviour, ICharacterComponent
     private bool isFiring;
     public float nextShootTime;
 
-    //Header
+    [Header("Camera Recoil info")]
     [SerializeField] float camShakeRecoil = 0.6f;
     [SerializeField] float cameraKick = 0.12f;
     [SerializeField] float cameraRecover = 0.2f;
@@ -62,7 +62,7 @@ public class CharacterGun : MonoBehaviour, ICharacterComponent
         {
             animator.SetTrigger("Fire"); 
         }
-        if (recoilCameraKick) recoilCameraKick.Kick(camShakeRecoil, cameraKick, cameraRecover);
+        if (recoilCameraKick) recoilCameraKick.Kick(camShakeRecoil, cameraKick, cameraRecover, ParentCharacter.IsAiming);
         Ray ray = mainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         Vector3 from = traceOrigins != null ? traceOrigins.position : ray.origin;
         if (Physics.Raycast(ray, out var hit, range, enemyMask, QueryTriggerInteraction.Ignore))
