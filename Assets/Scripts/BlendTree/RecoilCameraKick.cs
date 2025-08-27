@@ -9,6 +9,7 @@ public class RecoilCameraKick : MonoBehaviour
     CinemachineBasicMultiChannelPerlin[] perlins;
 
     float[] baseamplitude;
+    public AnimationCurve recoilCurve;
 
     private void Awake()
     {
@@ -30,36 +31,24 @@ public class RecoilCameraKick : MonoBehaviour
     }
     IEnumerator KickRoutine(float strenght, float peak, float recover, bool isAiming)
     {
-        //El peak y el recover son tiempos en segundos
-        //ParentCharacter.IsAiming me sirve pa poder hacer que el recoil sea diferente si estoy apuntando o no
-        //Tengo que reemplazar los lerp por el animation curve. El baseamplitude no sería un float, sino un AnimationCurve
-        //Pico
-        float t = 0;
-        while (t < peak)
+
+        if (strenght <= 0) yield break;     
+        if (isAiming) strenght = strenght * 0.6f;
+
+        recoilCurve = AnimationCurve.EaseInOut(0, 0, peak + recover, strenght);
+
+        float t = 0f;
+        float duration = peak + recover;
+        while (t < duration)
         {
             t += Time.deltaTime;
-            float k = t/ Mathf.Max(0.001f, peak);
-            if(isAiming) strenght = strenght * 0.6f;
+            float r = recoilCurve.Evaluate(t);
             for (int i = 0; i < perlins.Length; i++)
             {
-                if (perlins[i]) perlins[i].AmplitudeGain = Mathf.Lerp(baseamplitude[i], baseamplitude[i] + strenght, k);
+                if (perlins[i]) perlins[i].AmplitudeGain = baseamplitude[i] + r;
             }
             yield return null;
         }
-
-        //Recover
-        t = 0f;
-        while (t < recover)
-        {
-            t += Time.deltaTime;
-            float k = t / Mathf.Max(0.001f, recover);
-            for (int i = 0; i < perlins.Length; i++)
-            {
-                if (perlins[i]) perlins[i].AmplitudeGain = Mathf.Lerp(strenght, baseamplitude[i] + strenght, k);
-            }
-            yield return null;
-        }
-
         for (int i = 0; i < perlins.Length; i++)
         {
             if (perlins[i]) perlins[i].AmplitudeGain = baseamplitude[i];
