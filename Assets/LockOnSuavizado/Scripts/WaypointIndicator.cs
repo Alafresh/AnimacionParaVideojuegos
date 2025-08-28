@@ -32,6 +32,7 @@ public class WaypointIndicator : MonoBehaviour
         pos.y = Mathf.Clamp(pos.y, minY, maxY);
 
         img.transform.position = pos;
+
         int distance = (int)Vector3.Distance(target.position, transform.position);
         if (distance >=20 && distance <= 30) {
             colorImg.color = Color.yellow;
