@@ -10,9 +10,13 @@ namespace GA.Sessions.Class_03.Scripts
         [SerializeField] private FloatDamper speedY;
         [SerializeField] private float angularSpeed;
         [SerializeField] private Camera camera;
+
+        [Header("Movement Settings")]
+        [SerializeField] private float walkSpeed = 3f;   // 🚶 Velocidad de caminar
+        [SerializeField] private float runSpeed = 10f;   // 🏃 Velocidad de correr
+        private bool isRunning;
+
         private Quaternion targetRotation;
-
-
         private int _speedXHash;
         private int _speedYHash;
         private Animator _animator;
@@ -24,6 +28,7 @@ namespace GA.Sessions.Class_03.Scripts
             _speedXHash = Animator.StringToHash("SpeedX");
             _speedYHash = Animator.StringToHash("SpeedY");
         }
+
         private void SolveCharacterRotation()
         {
             Vector3 floorNormal = transform.up;
@@ -46,15 +51,33 @@ namespace GA.Sessions.Class_03.Scripts
         public void OnMove(InputAction.CallbackContext ctx)
         {
             Vector2 inputValue = ctx.ReadValue<Vector2>();
+
+            // Mantener normalizado en animator
             speedX.TargetValue = inputValue.x;
             speedY.TargetValue = inputValue.y;
         }
+
+        public void OnRun(InputAction.CallbackContext ctx)
+        {
+            if (ctx.started) isRunning = true;
+            if (ctx.canceled) isRunning = false;
+        }
+
         private void Update()
         {
             speedX.Update();
             speedY.Update();
+
+            // ✅ Animator recibe valores normalizados (-1 a 1)
             _animator.SetFloat(_speedXHash, speedX.CurrentValue);
             _animator.SetFloat(_speedYHash, speedY.CurrentValue);
+
+            // ✅ Velocidad real depende de caminar/correr
+            float currentSpeed = isRunning ? runSpeed : walkSpeed;
+
+            Vector3 move = new Vector3(speedX.CurrentValue, 0, speedY.CurrentValue) * currentSpeed;
+            transform.position += transform.TransformDirection(move) * Time.deltaTime;
+
             SolveCharacterRotation();
             if (!ParentCharacter.IsAiming)
                 ApplyCharacterRotation();
