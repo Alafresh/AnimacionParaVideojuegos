@@ -3726,6 +3726,8 @@ MonoBehaviour:
     _smoothTime: 0.5
   angularSpeed: 90
   camera: {fileID: 1020424247}
+  walkSpeed: 3
+  runSpeed: 10
 --- !u!114 &7034814753527062824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3759,7 +3761,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70b9973a5b1fe504e8e9dc0701c67f99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 1020424247}
+  lockCamera: {fileID: 772852043}
   detectionMask:
     serializedVersion: 2
     m_Bits: 64
